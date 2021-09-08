@@ -1,0 +1,70 @@
+<ol>
+  <li>Add an email and password field (with Material Components of course)</li>
+  <li>Add validation (email => required and email, password => required)</li>
+  <li>Show errors and hints</li>
+  <li>Make form submittable and disable button if invalid</li>
+  <li>BONUS: Do all of that by using the reactive approach!</li>
+</ol>
+
+<div>
+  <form
+    fxLayoutAlign="center center"
+    [formGroup]="loginForm"
+    (ngSubmit)="submit()"
+    fxLayoutGap="10px"
+    fxLayout="column"
+    class="myForm"
+    #f="ngForm"
+  >
+    <mat-form-field>
+      <input
+        placeholder="Your email"
+        formControlName="email"
+        name="email"
+        type="email"
+        matInput
+      />
+      <mat-icon matSuffix>email</mat-icon>
+      <mat-hint>Very useful hint</mat-hint>
+      <mat-error *ngIf="email.invalid">you entered an invalid email</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input
+        placeholder="Your password"
+        formControlName="password"
+        name="password"
+        type="password"
+        matInput
+      />
+      <mat-icon matSuffix>lock</mat-icon>
+      <mat-hint>Very useful hint</mat-hint>
+      <mat-error *ngIf="password.invalid">
+        you forgot to enter a password
+      </mat-error>
+    </mat-form-field>
+
+    <mat-radio-group
+      aria-labelledby="Select a gender"
+      formControlName="gender"
+      fxLayoutGap="30px"
+    >
+      <mat-radio-button value="female">
+        Female
+        <mat-icon matSuffix>woman</mat-icon>
+      </mat-radio-button>
+      <mat-radio-button value="male">
+        Male
+        <mat-icon matSuffix>man</mat-icon>
+      </mat-radio-button>
+    </mat-radio-group>
+
+    <button
+      [disabled]="f.invalid"
+      mat-raised-button
+      color="primary"
+      type="submit"
+    >
+      Submit
+    </button>
+  </form>
+</div>

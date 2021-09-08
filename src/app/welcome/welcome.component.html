@@ -1,0 +1,12 @@
+<nav mat-tab-nav-bar mat-align-tabs="end">
+  <a
+    [active]="activeLink == link"
+    (click)="activeLink = link"
+    *ngFor="let link of arr"
+    [routerLink]="[link]"
+    routerLinkActive
+    mat-tab-link
+  >
+    {{ link }}
+  </a>
+</nav>
